@@ -11,7 +11,7 @@
         </instance>
     </data>
     <actions>
-        <action id="startProcess" caption="msg://startProcess" icon="font-icon:CARET_RIGHT"/>
+        <action id="acceptAndConfirm" caption="msg://acceptAndStartWorking" icon="OK"/>
     </actions>
     <dialogMode height="600"
                 width="800"/>
@@ -33,19 +33,13 @@
                         <action id="clear" type="picker_clear"/>
                     </actions>
                 </pickerField>
-                <lookupField id="stateField" property="state"/>
+                <lookupField id="stateField" property="state" editable="false"/>
             </column>
         </form>
 
 
-        <groupBox id="procActionsBox" caption="mainMsg://com.haulmont.bpm.gui.procactions/actions"
-                  spacing="true" width="AUTO" orientation="vertical">
-            <fragment id="procActionsFragment" screen="bpm_ProcActionsFragment"/>
-        </groupBox>
-
-
         <hbox id="editActions" spacing="true">
-            <button action="startProcess" id="startProcessBtn"/>
+            <button action="acceptAndConfirm" id="acceptAndConfirmBtn"/>
             <button action="windowCommitAndClose"/>
             <button action="windowClose"/>
         </hbox>
