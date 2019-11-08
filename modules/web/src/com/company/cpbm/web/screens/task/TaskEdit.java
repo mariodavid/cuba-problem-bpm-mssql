@@ -68,8 +68,7 @@ public class TaskEdit extends StandardEditor<Task> {
     }
 
     private void startProcessWithComment(String comment) {
-        ProcInstance procInstance = createProcInstance(getEditedEntity()); //Create ProcInstance
-        /*Starts the process. The "startProcess" method automatically persists the passed procInstance with its actors*/
+        ProcInstance procInstance = createProcInstance(getEditedEntity());
 
         processRuntimeService.startProcess(
                 procInstance,
@@ -84,13 +83,8 @@ public class TaskEdit extends StandardEditor<Task> {
 
 
     private ProcInstance createProcInstance(Task task) {
-        //Es wird eine ProcInstanceDetails erzeugt mittels "new BpmEntitiesService.ProcInstanceDetails(PROC_DEFINITION_CODE)"
-        //PROC_DEFINITION_CODE entspricht dem Code des BPM Modells
         BpmEntitiesService.ProcInstanceDetails procInstanceDetails = getProcInstanceDetails(task);
-
-        //Verknüpfen der ProcInstance mit der Entität
         procInstanceDetails.setEntity(task);
-
         return bpmEntitiesService.createProcInstance(procInstanceDetails);
     }
 

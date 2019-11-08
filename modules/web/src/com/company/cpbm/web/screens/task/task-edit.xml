@@ -44,10 +44,6 @@
         </groupBox>
 
 
-        <groupBox id="processTasksBox" caption="mainMsg://com.haulmont.bpm.gui.procactions/actions" height="100%" width="100%">
-            <frame id="procTasksFrame" height="200px" screen="procTasksFrame"/>
-        </groupBox>
-
         <hbox id="editActions" spacing="true">
             <button action="startProcess" id="startProcessBtn"/>
             <button action="windowCommitAndClose"/>
