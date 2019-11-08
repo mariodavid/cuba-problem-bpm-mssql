@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.company.cpbm.web.screens.task">
+    <data>
+        <instance id="taskDc"
+                  class="com.company.cpbm.entity.Task"
+                  view="task-view">
+            <loader/>
+        </instance>
+    </data>
+    <actions>
+        <action id="startProcess" caption="msg://startProcess" icon="font-icon:CARET_RIGHT"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="taskDc">
+            <column width="250px">
+                <textField id="titleField" property="title"/>
+                <textArea id="descriptionField" property="description" rows="5"/>
+                <checkBox id="acceptanceRequiredField" property="acceptanceRequired"/>
+                <pickerField id="initiatorField" property="initiator">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <pickerField id="executorField" property="executor">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <lookupField id="stateField" property="state"/>
+            </column>
+        </form>
+
+
+        <groupBox id="procActionsBox" caption="mainMsg://com.haulmont.bpm.gui.procactions/actions"
+                  spacing="true" width="AUTO" orientation="vertical">
+            <fragment id="procActionsFragment" screen="bpm_ProcActionsFragment"/>
+        </groupBox>
+
+
+        <groupBox id="processTasksBox" caption="mainMsg://com.haulmont.bpm.gui.procactions/actions" height="100%" width="100%">
+            <frame id="procTasksFrame" height="200px" screen="procTasksFrame"/>
+        </groupBox>
+
+        <hbox id="editActions" spacing="true">
+            <button action="startProcess" id="startProcessBtn"/>
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>
