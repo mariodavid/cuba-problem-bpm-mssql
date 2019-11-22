@@ -54,4 +54,10 @@ it can use be created via the following command:
 ### Problem example
 
 
+#### BPM is Stuck with load of ProcInstance during process execution
+
+![problem](/img/problem-with-view.gif)
+
+#### BPM is not Stuck without load of ProcInstance during process execution
+![no problem](/img/no-problem-without-view.gif)
 
