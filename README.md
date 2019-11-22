@@ -1,6 +1,11 @@
-## CUBA Problem - BPM + MSSQL
+## CUBA Problem - BPM is Stuck
 
-This repo is an example that shows a problem with the combination of the BPM addon together with MSSQL database.
+This repo is an example that shows a problem with the combination of the BPM addon. When referencing the ProcInstance from the business entity and loading the business entity in the process execution (that will also load the procInstance via a corresponding view) - the application breaks at the point where the process starts to run.
+
+The error happens at least with the following DBMS:
+
+* HSQLDB
+* MSSQL
 
 
 ### Example description
@@ -44,4 +49,9 @@ It requires to have a running MS SQL server. Using the [MSSQL docker image](http
 it can use be created via the following command:
 
 `docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=yourStrong(!)Password' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2017-CU8-ubuntu`
+
+
+### Problem example
+
+
 
