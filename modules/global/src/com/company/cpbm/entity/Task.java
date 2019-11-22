@@ -1,5 +1,6 @@
 package com.company.cpbm.entity;
 
+import com.haulmont.bpm.entity.ProcInstance;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.security.entity.User;
@@ -33,6 +34,18 @@ public class Task extends StandardEntity {
 
     @Column(name = "STATE")
     protected String state;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PROC_INSTANCE_ID")
+    protected ProcInstance procInstance;
+
+    public ProcInstance getProcInstance() {
+        return procInstance;
+    }
+
+    public void setProcInstance(ProcInstance procInstance) {
+        this.procInstance = procInstance;
+    }
 
     public TaskState getState() {
         return state == null ? null : TaskState.fromId(state);

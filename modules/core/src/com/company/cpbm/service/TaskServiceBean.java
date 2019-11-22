@@ -21,16 +21,34 @@ public class TaskServiceBean implements TaskService {
     @Override
     public void markTaskAsConfirmed(UUID taskId) {
 
+        Task task = loadTask(taskId);
+
+        if(task != null) {
+            task.setState(TaskState.CONFIRMED);
+
+            dataManager.commit(task);
+
+            log.info("Task persisted with state: {}", task.getState());
+        }
+    }
+
+    private Task loadTask(UUID taskId) {
         Task task = dataManager.load(Task.class)
+
+                /*
+                 loading the Task with a reference to the ProcInstance Table causes the application to fail
+                 */
+                .view("task-view")
+
                 .id(taskId)
-                .one();
+                .optional()
+                .orElse(null);
 
-        log.info("Task loaded with ID: {}", taskId);
-        task.setState(TaskState.CONFIRMED);
+        if(task != null)
+            log.info("Task loaded with ID: {}", taskId);
+        else
+            log.error("No Task with ID {} available", taskId);
 
-
-        dataManager.commit(task);
-
-        log.info("Task persisted with state: {}", task.getState());
+        return task;
     }
 }

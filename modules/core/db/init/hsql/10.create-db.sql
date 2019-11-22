@@ -14,6 +14,8 @@ create table CPBM_TASK (
     ACCEPTANCE_REQUIRED boolean,
     INITIATOR_ID varchar(36),
     EXECUTOR_ID varchar(36),
+    STATE varchar(50),
+    PROC_INSTANCE_ID varchar(36),
     --
     primary key (ID)
 )^

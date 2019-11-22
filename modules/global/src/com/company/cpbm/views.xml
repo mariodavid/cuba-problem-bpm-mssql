@@ -4,5 +4,6 @@
     <view entity="cpbm_Task" name="task-view" extends="_local">
         <property name="initiator" view="_minimal"/>
         <property name="executor" view="_minimal"/>
+        <property name="procInstance" view="procInstance-edit"/>
     </view>
 </views>
